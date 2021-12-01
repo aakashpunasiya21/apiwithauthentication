@@ -1,7 +1,9 @@
-import { SET_BOOK, SET_CHARACTER, SET_MOVIE, SET_MOVIE_QOUTES } from "../actions";
+import { SET_BOOK, SET_CHARACTER, SET_MOVIE, SET_MOVIE_FILTERS, SET_MOVIE_QOUTES } from "../actions";
 const initialState = {
   book: [],
-  movie: [],
+  movie:{ 
+    movie:[],
+  filter:{limit:100}},
   character : [],
   quotes:[]
 }
@@ -15,7 +17,22 @@ export default function booksapi(state = initialState, action) {
     case SET_MOVIE:
       return{
         ...state,
-        movie:action.payload
+        movie:{
+          ...state.movie,
+          ...action.payload
+      }
+    }
+    case SET_MOVIE_FILTERS:
+      return{
+        ...state,
+        movie:{
+          ...state.movie,
+          filter :{
+            ...state.movie.filter,
+            ...action.payload,
+          }
+
+        }
       }
     case SET_CHARACTER:
       return{
@@ -24,7 +41,7 @@ export default function booksapi(state = initialState, action) {
       }
       case SET_MOVIE_QOUTES:return{
         ...state,
-        quotes:action.quotes
+        quotes:action.payload
       }
     default:
       return state

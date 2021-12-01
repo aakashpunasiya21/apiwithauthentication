@@ -15,6 +15,13 @@ export const Character = () => {
   return (
     <>
      <h1 className="text-center">Character Page</h1><hr />
+     <select name="limit" >
+        <option value={5}>5</option>
+        <option value={10}>10</option>
+        <option value={15}>15</option>
+        <option value={20}>20</option>
+        <option value={30}>30</option>
+      </select>
         <Table>
           <thead>
             <tr>
@@ -36,14 +43,6 @@ export const Character = () => {
 
           </tbody>
         </Table>
-    
-      {/* {charcterinfo.map((data) => (
-      <ul>
-        <li>{data.name}</li>
-        <li>{data.race}</li>
-      </ul>
-      ))} */}
-
-    </>
+      </>
   )
 }
